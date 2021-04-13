@@ -58,7 +58,7 @@ namespace PortProxyGUI.Data
 
         public Dictionary<MigrationKey, string[]> History = new Dictionary<MigrationKey, string[]>
         {
-            [new MigrationKey { MigrationId = "202103021542", ProductVersion = "1.1.0" }] = new[]
+            [new MigrationKey { MigrationId = "202103021543", ProductVersion = "1.1.1.1" }] = new[]
             {
                 @"CREATE TABLE rules
 (
@@ -67,7 +67,8 @@ namespace PortProxyGUI.Data
     ListenOn text,
     ListenPort integer,
     ConnectTo text,
-    ConnectPort integer
+    ConnectPort integer,
+    Comment text
 );",
                 "CREATE UNIQUE INDEX IX_Rules_Type_ListenOn_ListenPort ON Rules(Type, ListenOn, ListenPort);",
             },

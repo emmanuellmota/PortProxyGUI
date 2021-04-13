@@ -66,7 +66,7 @@ namespace PortProxyGUI
 
             if (int.TryParse(subItems[3].Text, out var listenPort) && 0 < listenPort && listenPort < 65536)
             {
-                form.UseUpdateMode(item, subItems[1].Text, subItems[2].Text, listenPort, subItems[4].Text, subItems[5].Text);
+                form.UseUpdateMode(item, subItems[1].Text, subItems[2].Text, listenPort, subItems[4].Text, subItems[5].Text, subItems[6].Text);
             }
             else MessageBox.Show("无效端口号。", "无效端口号", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
@@ -94,7 +94,7 @@ namespace PortProxyGUI
                 var imageIndex = proxies.Any(p => p.EqualsWithKeys(rule)) ? 1 : 0;
                 var item = new ListViewItem { ImageIndex = imageIndex, Tag = rule.Id }.Then(vitem =>
                 {
-                    vitem.SubItems.AddRange(new[] { rule.Type, rule.ListenOn, rule.ListenPort.ToString(), rule.ConnectTo, rule.ConnectPort.ToString() });
+                    vitem.SubItems.AddRange(new[] { rule.Type, rule.ListenOn, rule.ListenPort.ToString(), rule.ConnectTo, rule.ConnectPort.ToString(), rule.Comment });
                 });
                 listViewProxies.Items.Add(item);
             }

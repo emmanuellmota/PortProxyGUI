@@ -37,9 +37,10 @@ namespace PortProxyGUI
             textBox_listenPort.Text = "";
             textBox_connectTo.Text = "";
             textBox_connectPort.Text = "";
+            textBox_comment.Text = "";
         }
 
-        public void UseUpdateMode(ListViewItem item, string type, string listenOn, int listenPort, string connectTo, string connectPort)
+        public void UseUpdateMode(ListViewItem item, string type, string listenOn, int listenPort, string connectTo, string connectPort, string comment)
         {
             _updateMode = true;
             _updateLiveViewItem = item;
@@ -52,6 +53,7 @@ namespace PortProxyGUI
             textBox_listenPort.Text = listenPort.ToString();
             textBox_connectTo.Text = connectTo;
             textBox_connectPort.Text = connectPort;
+            textBox_comment.Text = comment;
         }
 
         private bool IsIPv6(string ip)
@@ -73,6 +75,7 @@ namespace PortProxyGUI
             var connectTo = textBox_connectTo.Text.Trim().ToLower();
             var listenPort = textBox_listenPort.Text.Trim();
             var connectPort = textBox_connectPort.Text.Trim();
+            var comment = textBox_comment.Text.Trim();
 
             if (!int.TryParse(listenPort, out var _listenPort) || _listenPort < 0 || _listenPort > 65535)
             {
@@ -105,6 +108,7 @@ namespace PortProxyGUI
                 rule.ListenPort = _listenPort;
                 rule.ConnectTo = connectTo;
                 rule.ConnectPort = _connectPort;
+                rule.Comment = comment;
 
                 CmdUtil.AddProxy("add", type, listenOn, _listenPort, connectTo, _connectPort);
                 Program.SqliteDbScope.Add(rule);
@@ -116,10 +120,20 @@ namespace PortProxyGUI
                 subItems[3].Text = _listenPort.ToString();
                 subItems[4].Text = connectTo;
                 subItems[5].Text = _connectPort.ToString();
+                subItems[6].Text = comment;
             }
             else
             {
+                Data.Rule rule = new Data.Rule();
+                rule.Type = type;
+                rule.ListenOn = listenOn;
+                rule.ListenPort = _listenPort;
+                rule.ConnectTo = connectTo;
+                rule.ConnectPort = _connectPort;
+                rule.Comment = comment;
+
                 CmdUtil.AddProxy("add", type, listenOn, _listenPort, connectTo, _connectPort);
+                Program.SqliteDbScope.Add(rule);
                 ParentWindow.RefreshProxyList();
             }
 

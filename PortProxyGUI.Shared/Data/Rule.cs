@@ -11,6 +11,7 @@ namespace PortProxyGUI.Data
         public int ListenPort { get; set; }
         public string ConnectTo { get; set; }
         public long ConnectPort { get; set; }
+        public string Comment { get; set; } = "";
 
         public bool Equals(Rule other)
         {

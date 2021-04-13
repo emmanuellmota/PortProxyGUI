@@ -40,6 +40,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_listenPort = new System.Windows.Forms.TextBox();
             this.comboBox_type = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_comment = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -106,11 +108,23 @@
             resources.GetString("comboBox_type.Items4")});
             this.comboBox_type.Name = "comboBox_type";
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // textBox_comment
+            // 
+            resources.ApplyResources(this.textBox_comment, "textBox_comment");
+            this.textBox_comment.Name = "textBox_comment";
+            // 
             // SetProxyForm
             // 
             this.AcceptButton = this.button_submit;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBox_comment);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox_type);
             this.Controls.Add(this.textBox_listenPort);
             this.Controls.Add(this.label5);
@@ -147,5 +161,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox_listenPort;
         private System.Windows.Forms.ComboBox comboBox_type;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox_comment;
     }
 }
